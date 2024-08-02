@@ -3,7 +3,7 @@
 // @namespace    leepavelich
 // @version      0.1
 // @description  Automatically sets CBC Olympics video playback speed to 2x
-// @match        ://cbc.ca/*
+// @match        https://cbc.ca/*
 // @grant        none
 // ==/UserScript==
 
