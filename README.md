@@ -1,5 +1,5 @@
 # CBC Video Player Playback Speed
-Automatically sets the CBC Phoenix video player to 2.0x speed
+Adds playback speed controls to the Phoenix video player that CBC uses for Olympics coverage
 
 ![image](https://github.com/user-attachments/assets/c2ce1063-8199-412a-a74e-256284f6efea)
 
