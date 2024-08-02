@@ -7,32 +7,31 @@
 // @grant        none
 // ==/UserScript==
 
-(() => {
+(function() {
     'use strict';
 
-    const setVideoSpeed = () => {
-        document.querySelectorAll('video[data-name="phoenix-playback-element"]').forEach(video => {
+    function setVideoSpeed() {
+        const video = document.querySelector('video[data-name="phoenix-playback-element"]');
+        if (video) {
             video.playbackRate = 2;
-        });
-    };
-
-    const onMutation = (mutations) => {
-        if (mutations.some(mutation => mutation.addedNodes.length)) {
-            setVideoSpeed();
         }
-    };
+    }
 
-    const observer = new MutationObserver(onMutation);
-
-    const initObserver = () => {
-        observer.observe(document.body, { childList: true, subtree: true });
-    };
-
-    const onPageLoad = () => {
+    function onPageLoad() {
         setVideoSpeed();
-        initObserver();
+      
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.addedNodes.length) {
+                    setVideoSpeed();
+                }
+            });
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true });
+
         setInterval(setVideoSpeed, 5000);
-    };
+    }
 
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', onPageLoad);
