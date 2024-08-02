@@ -7,10 +7,10 @@
 // @grant        none
 // ==/UserScript==
 
-(function() {
+(() => {
     'use strict';
 
-    function setVideoSpeed() {
+    const setVideoSpeed = () => {
         const video = document.querySelector('video[data-name="phoenix-playback-element"]');
         if (video) {
             video.playbackRate = 2;
@@ -20,10 +20,6 @@
         }
     }
 
-    // Run immediately
     setVideoSpeed();
-
-    // Set up an interval to keep checking and setting the speed
-    // This helps if the video player reloads or changes
     setInterval(setVideoSpeed, 5000);
 })();
